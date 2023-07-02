@@ -1,4 +1,4 @@
-import FormLogin from "@/components/FormLogin/FormLogin";
+import FormLogin from "@/components/Login/Loguin";
 
 export default function Home() {
   return (

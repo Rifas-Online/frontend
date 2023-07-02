@@ -1,11 +1,40 @@
-import React from 'react'
+'use client'
 
-type Props = {}
+import { useState } from 'react'
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod"
 
-const useLoguin = (props: Props) => {
-    return (
-        <div>useLoguin</div>
-    )
+
+const schema = z.object({
+    password: z.string().min(8, "Senha de no minimo 8 caracteres"),
+    email: z.string().email("Email inválido"),
+})
+
+type FormProps = z.infer<typeof schema>
+
+
+const useLoguin = () => {
+
+    const [inputTypeText, setInputTypeText] = useState(false)
+
+    const handleChangeInputType = () => {
+        setInputTypeText(!inputTypeText)
+    }
+
+    const { register, handleSubmit, formState: { errors } } = useForm<FormProps>({
+        mode: "onBlur",
+        resolver: zodResolver(schema)
+    })
+
+    const handleForm = (data: FormProps) => {
+        console.log(data)
+    }
+
+
+    return {
+        inputTypeText, register, handleSubmit, handleForm, handleChangeInputType, setInputTypeText,errors
+    }
 }
 
 export default useLoguin
