@@ -2,7 +2,7 @@
 
 import useLoguin from '@/hooks/useLoguin';
 import React from 'react';
-import { AiOutlineEyeInvisible, AiOutlineEye, AiOutlineArrowRight } from 'react-icons/ai';
+import { AiOutlineArrowRight } from 'react-icons/ai';
 import FormLogin from '../FormLogin/FormLogin';
 
 type Props = {};
@@ -19,9 +19,9 @@ function Login({ }: Props) {
         `}>
             {/* header */}
             <div className='flex justify-between'>
-                <h2 className='text-[30px]'>Sign In</h2>
+                <h2 className='text-[30px]'>Entrar</h2>
                 <a href='#' className='text-zinc-600 flex items-center gap-2'>
-                    <span>Sign Up</span> 
+                    <span>Criar Conta</span> 
                     <AiOutlineArrowRight/>
                 </a>
             </div>

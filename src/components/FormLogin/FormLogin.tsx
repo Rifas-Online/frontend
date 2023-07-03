@@ -48,8 +48,8 @@ function FormLogin({}: Props) {
             </div>
 
 
-            <div className='text-sm text-zinc-400 '>
-                <a href="">Mudar Senha</a>
+            <div className='text-sm text-zinc-600 '>
+                <a href="#">Esqueci Minha Senha</a>
             </div>
 
             <div className='flex justify-center items-center'>
