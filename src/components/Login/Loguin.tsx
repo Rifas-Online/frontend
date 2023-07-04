@@ -10,8 +10,6 @@ type Props = {};
 
 function Login({ }: Props) {
 
-    const {handleChangeInputType, handleForm, handleSubmit, register, inputTypeText, errors} = useLoguin()
-
     return (
         <div className={`
             flex flex-col gap-5
