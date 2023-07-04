@@ -1,6 +1,6 @@
 'use client'
 
-import useLoguin from '@/hooks/useLoguin';
+import useLoguin from '../../hooks/login/useLoguin';
 import React from 'react';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import FormLogin from '../FormLogin/FormLogin';

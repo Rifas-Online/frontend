@@ -1,5 +1,5 @@
-import useLoguin from '@/hooks/useLoguin'
-import React from 'react'
+import useLoguin from '../../hooks/login/useLoguin'
+import React, { useEffect } from 'react'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 
 type Props = {
@@ -9,6 +9,10 @@ type Props = {
 function FormLogin({}: Props) {
 
     const {handleSubmit, handleForm, register, inputTypeText,handleChangeInputType, errors} = useLoguin()
+
+    useEffect(() => {
+
+    },[])
 
     return (
         <form
@@ -25,7 +29,7 @@ function FormLogin({}: Props) {
                             type="email" placeholder="Digite Seu Email"
                         />
                     </div>
-                    <span className="text-red-500 text-[10px] ml-5">{errors.email?.message}</span>
+                    <span className="text-red-500 text-[12px] ml-5">{errors.email?.message}</span>
                 </div>
 
 
@@ -43,7 +47,7 @@ function FormLogin({}: Props) {
                             {inputTypeText ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
                         </span>
                     </div>
-                    <span className="text-red-500 text-[10px] ml-5">{errors.password?.message}</span>
+                    <span className="text-red-500 text-[12px] ml-5 flex">{errors.password?.message}</span>
                 </div>
             </div>
 
