@@ -1,18 +1,23 @@
 import useLoguin from '../../hooks/login/useLoguin'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
+import PassWordIstructor from '../Login/PassWordIstructor';
 
 type Props = {
 
 }
 
-function FormLogin({}: Props) {
+function FormLogin({ }: Props) {
 
-    const {handleSubmit, handleForm, register, inputTypeText,handleChangeInputType, errors} = useLoguin()
-
-    useEffect(() => {
-
-    },[])
+    const { handleSubmit, 
+            handleForm, 
+            register, 
+            inputTypeText, 
+            handleChangeInputType, 
+            errors,
+            handleInputBlur,
+            handleInputFocus,
+            inputFocus } = useLoguin()
 
     return (
         <form
@@ -22,24 +27,30 @@ function FormLogin({}: Props) {
 
             <div className='flex flex-col gap-5'>
                 <div>
-                    <div className={`flex overflow-hidden items-center border-2 border-zinc-400 rounded-3xl `}>
+
+                    <div className={`flex overflow-hidden items-center border-2 border-zinc-400 rounded-3xl ${inputFocus.email ? 'border-green-400' : ''}`}>
                         <input
                             {...register("email")}
                             className='w-full outline-none focus:border-green-400 p-3  bg-transparent'
                             type="email" placeholder="Digite Seu Email"
+                            onFocus={() => handleInputFocus('email')}
+                            onBlur={() => handleInputBlur('email')}
                         />
                     </div>
                     <span className="text-red-500 text-[12px] ml-5">{errors.email?.message}</span>
                 </div>
 
 
-                <div>
-                    <div className={`flex flex-col overflow-hidden items-center border-2 rounded-3xl border-zinc-400 relative`}>
+                <div className='relative'>
+                    <PassWordIstructor focus={inputFocus.password}/>
+                    <div className={`flex flex-col overflow-hidden items-center border-2 rounded-3xl border-zinc-400 relative ${inputFocus.password ? 'border-green-400' : ''}`}>
                         <input
                             {...register("password")}
                             className='w-full outline-none focus:border-green-400 p-3 bg-transparent pr-12'
                             type={`${inputTypeText ? "text" : "password"}`}
                             placeholder="Crie uma Senha Forte"
+                            onFocus={() => handleInputFocus('password')}
+                            onBlur={() => handleInputBlur('password')}
                         />
                         <span
                             onClick={handleChangeInputType}
