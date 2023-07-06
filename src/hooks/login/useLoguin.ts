@@ -35,36 +35,31 @@ const useLoguin = () => {
         setInputFocus((prevFocus) => ({ ...prevFocus, [inputName]: false }));
     };
 
-    
-    
-    
-    
+
+
+
+
     //zod validations config and type of input password 
     const [inputTypeText, setInputTypeText] = useState(false)
-    
+
     const handleChangeInputType = () => {
         setInputTypeText(!inputTypeText)
     }
-    
+
     const { register, handleSubmit, formState: { errors } } = useForm<FormProps>({
         mode: "onSubmit",
         resolver: zodResolver(schema)
     })
-    
-    const handleForm = (data: FormProps) => {
-        console.log(data)
-    }
-    
-    
-    useEffect(() => {
-        const SendData = async () => {
-            try {
-                
-            } catch (error) {
 
-            }
+    const handleForm = async (data: FormProps) => {
+        try {
+            const response = await axios.post('http://localhost:3001/auth/login', data);
+            console.log(response.data); // Exibe a resposta da API
+        } catch (error) {
+            console.error(error);
         }
-    },[handleSubmit])
+    }
+
     return {
         inputTypeText,
         errors,
@@ -72,11 +67,11 @@ const useLoguin = () => {
         setInputFocus,
         handleInputFocus,
         handleInputBlur,
-        register, 
-        handleSubmit, 
-        handleForm, 
-        handleChangeInputType, 
-        setInputTypeText, 
+        register,
+        handleSubmit,
+        handleForm,
+        handleChangeInputType,
+        setInputTypeText,
     }
 }
 
