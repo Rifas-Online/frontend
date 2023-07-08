@@ -1,23 +1,26 @@
 import useLoguin from '../../hooks/login/useLoguin'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
-import PassWordIstructor from '../Login/PassWordIstructor';
+import PassWordIstructor from '../PasswordInstructor/PassWordIstructor';
+import { useRouter } from 'next/router';
 
 type Props = {
-
+    forgotPassword: boolean
+    btnText: string
+    url: string
 }
 
-function FormLogin({ }: Props) {
+function FormFiels({ forgotPassword, btnText, url }: Props) {
 
-    const { handleSubmit, 
-            handleForm, 
-            register, 
-            inputTypeText, 
-            handleChangeInputType, 
-            errors,
-            handleInputBlur,
-            handleInputFocus,
-            inputFocus } = useLoguin()
+    const { handleSubmit,
+        handleForm,
+        register,
+        inputTypeText,
+        handleChangeInputType,
+        errors,
+        handleInputBlur,
+        handleInputFocus,
+        inputFocus } = useLoguin();
 
     return (
         <form
@@ -42,7 +45,7 @@ function FormLogin({ }: Props) {
 
 
                 <div className='relative'>
-                    <PassWordIstructor focus={inputFocus.password}/>
+                    <PassWordIstructor focus={inputFocus.password} />
                     <div className={`flex flex-col overflow-hidden items-center border-2 rounded-3xl border-zinc-400 relative ${inputFocus.password ? 'border-green-400' : ''}`}>
                         <input
                             {...register("password")}
@@ -61,15 +64,18 @@ function FormLogin({ }: Props) {
                     <span className="text-red-500 text-[12px] ml-5 flex">{errors.password?.message}</span>
                 </div>
             </div>
+            <input {...register("hidden")} type="hidden" value={url} />
 
 
-            <div className='text-sm text-zinc-600 '>
-                <a href="#">Esqueci Minha Senha</a>
-            </div>
+            {forgotPassword && (
+                <div className='text-sm text-zinc-600 '>
+                    <a href="#" className='underline'>Esqueci Minha Senha</a>
+                </div>
+            )}
 
             <div className='flex justify-center items-center'>
                 <button className='bg-gradient-to-r from-teal-400 to-green-500 py-2 px-16 rounded-3xl text-white shadow-green-800 shadow-md'>
-                    Entrar
+                    {btnText}
                 </button>
             </div>
 
@@ -78,4 +84,4 @@ function FormLogin({ }: Props) {
     )
 }
 
-export default FormLogin
+export default FormFiels

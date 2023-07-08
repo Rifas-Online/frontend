@@ -1,10 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import axios from 'axios'
+import { useRouter } from 'next/navigation';
+
 
 
 export const schema = z.object({
@@ -14,12 +16,18 @@ export const schema = z.object({
         .regex(/[^A-Za-z0-9]/, "Senha deve conter pelo menos um caractere especial")
         .regex(/[A-Z]/, 'Senha deve conter pelo menos uma letra maiúscula'),
     email: z.string().email("Email inválido"),
+    hidden: z.string()
 })
 
-type FormProps = z.infer<typeof schema>
+export type FormProps = z.infer<typeof schema>
+
+
 
 
 const useLoguin = () => {
+
+    const router = useRouter();
+    
 
     // focus config
     const [inputFocus, setInputFocus] = useState({
@@ -53,8 +61,11 @@ const useLoguin = () => {
 
     const handleForm = async (data: FormProps) => {
         try {
-            const response = await axios.post('http://localhost:3001/auth/login', data);
-            console.log(response.data); // Exibe a resposta da API
+            const response = await axios.post(`http://localhost:3001/auth/${data.hidden}`, data);
+            if(response.data.accessToken) {
+                router.push("/dashboard"); 
+            }
+            console.log(response.data.accessToken); 
         } catch (error) {
             console.error(error);
         }
