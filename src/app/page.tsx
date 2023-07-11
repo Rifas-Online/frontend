@@ -1,14 +1,17 @@
-import Form from "@/components/Form/Form";
+import React from 'react'
+import { cookies } from 'next/headers'
 
+type Props = {}
 
+const page = (props: Props) => {
 
-
-export default function Home() {
+  const hasTookenCookie = cookies().getAll()
+  console.log(hasTookenCookie) 
   return (
-    <main className="bg-slate-200">
-      <div className="w-screen h-screen flex flex-1 items-center justify-center">
-        <Form url={"login"} btnText="Entrar" text="Entrar" target="register" textRedirect="Criar Conta" forgotPassword/>
-      </div>
-    </main>
+    <>
+      home
+    </>
   )
 }
+
+export default page

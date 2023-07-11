@@ -63,9 +63,10 @@ const useLoguin = () => {
         try {
             const response = await axios.post(`http://localhost:3001/auth/${data.hidden}`, data);
             if(response.data.accessToken) {
-                router.push("/dashboard"); 
+                // router.push("/home"); 
             }
-            console.log(response.data.accessToken); 
+            console.log(response.data.accessToken);
+
         } catch (error) {
             console.error(error);
         }

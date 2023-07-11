@@ -15,5 +15,3 @@ const page = (props: Props) => {
 }
 
 export default page
-
-{/* <FormHeader text='Crie Su Conta' target='/' textRedirect='Já tenho conta' /> */ }

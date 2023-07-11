@@ -2,7 +2,6 @@ import useLoguin from '../../hooks/login/useLoguin'
 import React from 'react'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 import PassWordIstructor from '../PasswordInstructor/PassWordIstructor';
-import { useRouter } from 'next/router';
 
 type Props = {
     forgotPassword: boolean
