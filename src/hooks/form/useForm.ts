@@ -7,6 +7,7 @@ import { z } from "zod"
 import axios from 'axios'
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
+import useMessage from '@/components/message/hook/UseMessage'
 
 
 
@@ -30,6 +31,7 @@ export type FormProps = z.infer<typeof schema>
 const useLoguin = () => {
 
     const router = useRouter();
+    const { handleShowMessage, setShowMessage, showMessage } = useMessage()
 
 
     // focus config
@@ -65,17 +67,22 @@ const useLoguin = () => {
     const handleForm = async (data: FormProps) => {
         try {
             const response = await axios.post(`http://localhost:3001/auth/${data.hidden}`, data);
-            const token = response.data.accessToken
+            const token = response.data.accessToken;
+            
             if (token) {
                 Cookies.set('token', token);
-                router.push("/")
+                router.push('/');
+                return;
             }
-
-            
         } catch (error) {
+            const status = error
             console.error(error);
+            if (status !== 0) {
+                handleShowMessage()
+                return;
+            }
         }
-    }
+    };
 
     return {
         inputTypeText,

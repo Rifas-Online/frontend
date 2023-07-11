@@ -1,18 +1,17 @@
 'use client'
 
-import Form from '@/components/Form/Form'
-
+import { MessageProvider } from "../../context/message";
 import React from 'react'
+import Register from '@/components/register/Register';
 
 type Props = {}
 
 const page = (props: Props) => {
+
     return (
-        <main className="bg-slate-200">
-            <div className="w-screen h-screen flex flex-1 items-center justify-center">
-                <Form url='register'  btnText='criar Conta' text='Crie Sua Conta' target='/login' textRedirect='Já Tenho Conta'/>
-            </div>
-        </main>
+        <MessageProvider>
+            <Register/>
+        </MessageProvider>
     )
 }
 

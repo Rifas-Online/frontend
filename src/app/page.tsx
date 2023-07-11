@@ -1,8 +1,9 @@
 "use client"
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
+import Skeletor from '@/components/skeleton/Skeletor';
 
 type Props = {};
 
@@ -19,6 +20,7 @@ const Home = (props: Props) => {
   return (
     <>
       <h1>Home aqui</h1>
+      <Skeletor/>
     </>
   );
 };
