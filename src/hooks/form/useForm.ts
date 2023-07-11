@@ -6,6 +6,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import axios from 'axios'
 import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
+
+
 
 
 
@@ -27,7 +30,7 @@ export type FormProps = z.infer<typeof schema>
 const useLoguin = () => {
 
     const router = useRouter();
-    
+
 
     // focus config
     const [inputFocus, setInputFocus] = useState({
@@ -62,11 +65,13 @@ const useLoguin = () => {
     const handleForm = async (data: FormProps) => {
         try {
             const response = await axios.post(`http://localhost:3001/auth/${data.hidden}`, data);
-            if(response.data.accessToken) {
-                // router.push("/home"); 
+            const token = response.data.accessToken
+            if (token) {
+                Cookies.set('token', token);
+                router.push("/")
             }
-            console.log(response.data.accessToken);
 
+            
         } catch (error) {
             console.error(error);
         }

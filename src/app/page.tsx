@@ -1,17 +1,26 @@
-import React from 'react'
-import { cookies } from 'next/headers'
+"use client"
 
-type Props = {}
+import React, { useEffect } from 'react';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 
-const page = (props: Props) => {
+type Props = {};
 
-  const hasTookenCookie = cookies().getAll()
-  console.log(hasTookenCookie) 
+const Home = (props: Props) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = Cookies.get('token');
+    if (!token) {
+      router.push('/register');
+    }
+  }, []);
+
   return (
     <>
-      home
+      <h1>Home aqui</h1>
     </>
-  )
-}
+  );
+};
 
-export default page
+export default Home;

@@ -1,4 +1,4 @@
-import useLoguin from '../../hooks/login/useLoguin'
+import useLoguin from '../../hooks/form/useForm'
 import React from 'react'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 import PassWordIstructor from '../PasswordInstructor/PassWordIstructor';
