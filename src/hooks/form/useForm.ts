@@ -76,7 +76,6 @@ const useLoguin = () => {
             }
         } catch (error) {
             const status = error
-            console.error(error);
             if (status !== 0) {
                 handleShowMessage()
                 return;
