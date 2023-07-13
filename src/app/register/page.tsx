@@ -4,10 +4,8 @@ import { MessageProvider } from "../../context/message";
 import React from 'react'
 import Register from '@/components/register/Register';
 
-type Props = {}
 
-const page = (props: Props) => {
-
+const page = () => {
     return (
         <MessageProvider>
             <Register/>

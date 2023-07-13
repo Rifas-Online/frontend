@@ -31,7 +31,7 @@ export type FormProps = z.infer<typeof schema>
 const useLoguin = () => {
 
     const router = useRouter();
-    const { handleShowMessage, setShowMessage, showMessage } = useMessage()
+    const { handleShowMessage } = useMessage()
 
 
     // focus config

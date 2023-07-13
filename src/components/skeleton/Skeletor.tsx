@@ -2,12 +2,8 @@ import React, { useState } from 'react'
 import Skeleton, {SkeletonTheme} from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-type Props = {}
 
-const Skeletor = (props: Props) => {
-
-    const [isLoading, setIsLoading] = useState(false)
-
+const Skeletor = () => {
     return (
         <div>
             <SkeletonTheme baseColor="#202020" highlightColor="#444">

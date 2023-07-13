@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import FormFields from '../FormFields/FormFields';
 import FormHeader from '../FormHeader/FormHeader';

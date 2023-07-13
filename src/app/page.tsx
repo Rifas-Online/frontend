@@ -5,9 +5,7 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import Skeletor from '@/components/skeleton/Skeletor';
 
-type Props = {};
-
-const Home = (props: Props) => {
+const Home = () => {
   const router = useRouter();
 
   useEffect(() => {

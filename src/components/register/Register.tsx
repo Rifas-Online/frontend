@@ -3,9 +3,8 @@ import useMessage from "@/components/message/hook/UseMessage";
 import Message from "@/components/message/Message";
 import Form from '../Form/Form';
 
-type Props = {}
 
-const Register = (props: Props) => {
+const Register = () => {
 
     const { showMessage } = useMessage()
     console.log(showMessage)
