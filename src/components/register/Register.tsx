@@ -7,7 +7,6 @@ import Form from '../Form/Form';
 const Register = () => {
 
     const { showMessage } = useMessage()
-    console.log(showMessage)
 
     return (
         <main className="bg-slate-200">

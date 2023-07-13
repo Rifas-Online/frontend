@@ -30,7 +30,10 @@ function FormFiels({ forgotPassword, btnText, url }: Props) {
             <div className='flex flex-col gap-5'>
                 <div>
 
-                    <div className={`flex overflow-hidden items-center border-2 border-zinc-400 rounded-3xl ${inputFocus.email ? 'border-green-400' : ''}`}>
+                    <div className={`
+                        flex overflow-hidden items-center border-2 rounded-3xl 
+                        ${inputFocus.email ? 'border-green-400 shadow-sm shadow-green-400' : ' border-zinc-400'}
+                    `}>
                         <input
                             {...register("email")}
                             className='w-full outline-none focus:border-green-400 p-3  bg-transparent'
@@ -45,7 +48,10 @@ function FormFiels({ forgotPassword, btnText, url }: Props) {
 
                 <div className='relative'>
                     <PassWordIstructor focus={inputFocus.password} />
-                    <div className={`flex flex-col overflow-hidden items-center border-2 rounded-3xl border-zinc-400 relative ${inputFocus.password ? 'border-green-400' : ''}`}>
+                    <div className={`
+                        flex flex-col overflow-hidden items-center border-2 rounded-3xl  relative 
+                        ${inputFocus.password ? 'border-green-400 shadow-sm shadow-green-400' : 'border-zinc-400'}
+                    `}>
                         <input
                             {...register("password")}
                             className='w-full outline-none focus:border-green-400 p-3 bg-transparent pr-12'
@@ -73,7 +79,11 @@ function FormFiels({ forgotPassword, btnText, url }: Props) {
             )}
 
             <div className='flex justify-center items-center'>
-                <button className='bg-gradient-to-r from-teal-400 to-green-500 py-2 px-16 rounded-3xl text-white shadow-green-800 shadow-md'>
+                <button className={`
+                    bg-gradient-to-r from-teal-400 to-green-500 text-white shadow-green-800
+                    shadow-md py-2 px-16 rounded-3xl
+                    hover:from-green-500 hover:to-teal-400
+                `}>
                     {btnText}
                 </button>
             </div>
