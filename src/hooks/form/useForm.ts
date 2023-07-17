@@ -10,9 +10,6 @@ import Cookies from 'js-cookie';
 import useMessage from '@/components/message/hook/UseMessage'
 
 
-
-
-
 export const schema = z.object({
     password: z.string()
         .min(8, "Senha de no minimo 8 caracteres")
@@ -24,8 +21,6 @@ export const schema = z.object({
 })
 
 export type FormProps = z.infer<typeof schema>
-
-
 
 
 const useLoguin = () => {

@@ -9,8 +9,8 @@ type Props = {
 
 const FormHeader = ({text = "", textRedirect="", target}: Props) => {
     return (
-        <div className='flex justify-between'>
-            <h2 className='text-[30px]'>{text}</h2>
+        <div className='flex justify-between gap-4'>
+            <h2 className='text-[26px]'>{text}</h2>
             <a href={target} className='text-zinc-600 flex items-center gap-2'>
                 <span>{textRedirect}</span>
                 <AiOutlineArrowRight />
