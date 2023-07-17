@@ -63,6 +63,7 @@ const useLoguin = () => {
         try {
             const response = await axios.post(`http://localhost:3002/auth/${data.hidden}`, data);
             const token = response.data.accessToken;
+            console.log(data)
             
             if (token) {
                 Cookies.set('token', token);
